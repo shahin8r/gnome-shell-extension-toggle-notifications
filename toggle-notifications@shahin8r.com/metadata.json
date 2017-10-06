@@ -1,1 +1,7 @@
-{"uuid": "toggle-notifications@shahin8r.com", "shell-version": ["3.24.2"], "name": "Toggle Notifications", "description": "Mute or unmute GNOME notifications with a single click."}
+{
+  "uuid": "toggle-notifications@shahin8r.com",
+  "shell-version": ["3.10", "3.11", "3.12", "3.13", "3.14", "3.16", "3.18", "3.20", "3.22", "3.24"],
+  "name": "Toggle Notifications",
+  "description": "Mute or unmute GNOME notifications with a single click.",
+  "url" : "https://github.com/shahin8r/gnome-shell-extension-toggle-notifications"
+}
