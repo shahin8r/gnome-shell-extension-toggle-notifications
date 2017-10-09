@@ -23,36 +23,36 @@ function _toggleNotifications() {
 }
 
 function init(extensionMeta) {
-    button = new St.Bin({
-      style_class: 'panel-button',
-      reactive: true,
-      can_focus: true,
-      x_fill: true,
-      y_fill: false,
-      track_hover: true
-    });
+  button = new St.Bin({
+    style_class: 'panel-button',
+    reactive: true,
+    can_focus: true,
+    x_fill: true,
+    y_fill: false,
+    track_hover: true
+  });
 
-    const theme = imports.gi.Gtk.IconTheme.get_default();
-    theme.append_search_path(extensionMeta.path + '/icons');
+  const theme = imports.gi.Gtk.IconTheme.get_default();
+  theme.append_search_path(extensionMeta.path + '/icons');
 
-    enabledIcon = new St.Icon({ icon_name: 'toggle-notifications-enabled-symbolic', style_class: 'system-status-icon' });
-    disabledIcon = new St.Icon({ icon_name: 'toggle-notifications-disabled-symbolic', style_class: 'system-status-icon' });
+  enabledIcon = new St.Icon({ icon_name: 'toggle-notifications-enabled-symbolic', style_class: 'system-status-icon' });
+  disabledIcon = new St.Icon({ icon_name: 'toggle-notifications-disabled-symbolic', style_class: 'system-status-icon' });
 
-    notificationSettings = new Gio.Settings({ schema: 'org.gnome.desktop.notifications'});
+  notificationSettings = new Gio.Settings({ schema: 'org.gnome.desktop.notifications' });
 
-    button.connect('button-press-event', _toggleNotifications);
+  button.connect('button-press-event', _toggleNotifications);
 }
 
 function enable() {
-    if (_toggleStatus()) {
-      button.set_child(enabledIcon);
-    } else {
-      button.set_child(disabledIcon);
-    }
+  if (_toggleStatus()) {
+    button.set_child(enabledIcon);
+  } else {
+    button.set_child(disabledIcon);
+  }
 
-    Main.panel._rightBox.insert_child_at_index(button, 0);
+  Main.panel._rightBox.insert_child_at_index(button, 0);
 }
 
 function disable() {
-    Main.panel._rightBox.remove_child(button);
+  Main.panel._rightBox.remove_child(button);
 }
